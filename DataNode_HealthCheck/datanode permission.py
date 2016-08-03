@@ -36,6 +36,7 @@ def keyword_extractor(text_found,color,filevariable):
   filevariable.seek(0);
   Startup_Messages=[]
   Errors=[]
+  #####
   Dir=[]
 
   for line in reversed(list(filevariable)):
