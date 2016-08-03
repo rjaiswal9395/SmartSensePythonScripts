@@ -51,13 +51,6 @@ def keyword_extractor(text_found,filevariable):
 
 
   print( "Total ", count, " Instances Found\n")
-  #
-  # for line in Startup_Messages:
-  #   print(tcolors.OKGREEN+line)
-  # for line in Errors:
-  #   print(tcolors.FAIL+line)
-  # for line in Dir:
-  #   print(tcolors.FAIL+"/"+line)
   return Startup_Messages,Errors,count,Dir
 
 def date_timestamp_extractor(input_string):
