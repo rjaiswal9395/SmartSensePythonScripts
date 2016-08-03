@@ -103,7 +103,7 @@ def printer(startup_msg,errors,count,dir):
 
 
 def main():
-    path="hadoop-hdfs-datanode-hbs1.hwxblr.com.log"
+    path="../Log_Files_For_Parsing/hadoop-hdfs-datanode-hbs1.hwxblr.com.log"
     opened_file=reader(path)
     parser(opened_file)
 main()
