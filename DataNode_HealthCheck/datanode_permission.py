@@ -5,23 +5,11 @@ import subprocess
 from datetime import *
 from datetime import timedelta
 
-
-class tcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
 def reader(filepath):
-    print(tcolors.HEADER+filepath+" opened for processing\n")
+    print(filepath+" opened for processing\n")
     return open(filepath,"r")
 
-def keyword_extractor(text_found,color,filevariable):
-  jvm_writer = csv.writer(open('jvm_gc.csv', 'w'))
+def keyword_extractor(text_found,filevariable):
   filevariable.seek(0);
   for line in reversed(list(filevariable)):  # file is being read in reverse to obtain the recent date and time entry
     match = re.search(r'(^\d{4}-\d{2}-\d{2} [0-2][0-3]:[0-5][0-9]:[0-5][0-9])',line)  # searching for date and time in every line
@@ -62,7 +50,7 @@ def keyword_extractor(text_found,color,filevariable):
 
 
 
-  print(tcolors.BOLD + "Total ", count, " Instances Found\n")
+  print( "Total ", count, " Instances Found\n")
   #
   # for line in Startup_Messages:
   #   print(tcolors.OKGREEN+line)
@@ -81,24 +69,24 @@ def date_timestamp_extractor(input_string):
       return 0,0
 
 def parser(file):
-    startup_msg,errors,count,dir=keyword_extractor("Invalid dfs.datanode.data.dir",tcolors.WARNING,file)
+    startup_msg,errors,count,dir=keyword_extractor("Invalid dfs.datanode.data.dir",file)
     printer(startup_msg,errors,count,dir)
 
 def printer(startup_msg,errors,count,dir):
     if (startup_msg is not None):
-      print (tcolors.OKGREEN+"#### LATEST STARTUP MESSAGES ####\n")
+      print ("#### LATEST STARTUP MESSAGES ####\n")
       for line in reversed(startup_msg):
-        print(tcolors.OKGREEN + line)
+        print(line)
     if(errors is not None):
-      print(tcolors.FAIL+"#####  DIRECTORIES BELOW SEEMS TO HAVE ACCESS PROBLEMS#####\nCHECK THE FOLLOWING\n1.PERMISSION\n2.OWNERSHIP\n")
+      print("#####  DIRECTORIES BELOW SEEMS TO HAVE ACCESS PROBLEMS#####\nCHECK THE FOLLOWING\n1.PERMISSION\n2.OWNERSHIP\n")
       if (dir is not None):
         for line in dir:
-          print(tcolors.FAIL +"/" +line)
-          print(subprocess.call(["ls", "-ld","/"+line]),"\n")
+          print("/" +line)
+#          print(subprocess.call(["ls", "-ld","/"+line]),"\n")
       else:
           print("ERROR OCCURED BUT DIRECTORY COULD NOT BE FOUND")
     else:
-      print(tcolors.OKGREEN+"NO INVALID DIRECTORY ERROR")
+      print("NO INVALID DIRECTORY ERROR")
 
 
 
