@@ -2,7 +2,7 @@
    A python script to find out the information about the log file provided
    and to also extract the data from the log file in a particular time period
 
-   In the command line please enter the something like this:
+   In the command line please enter something like this:
    "python  lfcfinal.py  /inputlogfilepath  /outputwrtiepath  int(number of days you want the data to be grepped)"
 """
 import os
