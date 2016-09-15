@@ -1,0 +1,9 @@
+Datanode,Invalid dfs.datanode.data.dir,possible invalid solution
+Datanode,timeout while waiting for channel to be ready ,possible timeout solution
+Datanode,error processing REQUEST_SHORT_CIRCUIT_FDS operation,possible Solution
+Datanode,IOException in offerService,possible Solution
+Datanode,IOException in BlockReceiver.run():,possible Solution
+Datanode,java.io.IOException: Broken pipe,possible Solution
+Datanode,java.io.EOFException: Premature EOF: no length prefix available ,possible Solution
+Datanode,java.io.InterruptedIOException: Interrupted while waiting for IO on channel,possible Solution
+Datanode,java.io.IOException: Premature EOF from inputStream ,possible Solution
